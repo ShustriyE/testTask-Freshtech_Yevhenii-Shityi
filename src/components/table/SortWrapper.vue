@@ -1,10 +1,10 @@
 <template>
   <div>
     <h3>Sort By</h3>
-    <div>
-      <div v-for="(rule, index) in sortBy" :key="index">
+    <div class="relative_wrapper">
+      <div v-for="(rule, index) in sortBy" :key="index" class="relative_wrapper rules">
         {{ rule }}
-        <button @click="removeSortRule(index)">Remove</button>
+        <div @click="removeSortRule(index)" class="remove_button">+</div>
       </div>
       <div>
         <select v-model="selectedSortRule" @change="addSortRule">
@@ -24,27 +24,50 @@ export default {
   data() {
     return {
       selectedSortRule: null,
-    }
+    };
   },
   methods: {
     addSortRule() {
-      if (this.selectedSortRule && !this.sortBy.includes(this.selectedSortRule)) {
-        this.sortBy.push(this.selectedSortRule)
+      if (
+        this.selectedSortRule &&
+        !this.sortBy.includes(this.selectedSortRule)
+      ) {
+        this.sortBy.push(this.selectedSortRule);
       }
     },
     removeSortRule(index) {
-      this.sortBy.splice(index, 1)
+      this.sortBy.splice(index, 1);
     },
   },
   computed: {
     sortBy() {
-      return this.$store.getters.sortBy
+      return this.$store.getters.sortBy;
     },
     chooseSortRule() {
-      return this.$store.getters.formFields.map((field) => field.id)
+      return this.$store.getters.formFields.map((field) => field.id);
     },
   },
-}
+};
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.relative_wrapper {
+  position: relative;
+}
+
+.rules {
+  margin: 5px;
+}
+
+.remove_button {
+  user-select: none;
+  cursor: pointer;
+  position: absolute;
+  left: -13px;
+  top: -5px;
+  rotate: 50deg;
+  width: 1px;
+  font-size: 21px;
+  color: red;
+}
+</style>

@@ -235,6 +235,7 @@ export default {
 }
 
 .button {
+  user-select: none;
   width: 150px;
   text-align: center;
   cursor: pointer;
