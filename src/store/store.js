@@ -13,6 +13,10 @@ export default new Vuex.Store({
       ]
     },
     formData: [],
+    filterRules: {
+      include: [],
+      exclude: []
+    },
   },
   mutations: {
     updateFormData(state, data) {
@@ -23,12 +27,60 @@ export default new Vuex.Store({
       
       state.formData.push(convertData)
     },
+    addFilterRule(state, { type, rules }) {
+      state.filterRules[type].push(rules);
+    },
+    removeFilterRule(state, { type, index }) {
+      state.filterRules[type].splice(index, 1);
+    },
   },
   actions: {
-
+    addIncludeFilterRule({ commit }, rules) {
+      commit('addFilterRule', { type: 'include', rules });
+    },
+    addExcludeFilterRule({ commit }, rules) {
+      commit('addFilterRule', { type: 'exclude', rules });
+    },
+    removeIncludeFilterRule({ commit }, index) {
+      commit('removeFilterRule', { type: 'include', index });
+    },
+    removeExcludeFilterRule({ commit }, index) {
+      commit('removeFilterRule', { type: 'exclude', index });
+    },
   },
   getters: {
     formFields: state => state.formConfig.fields,
     formData: state => state.formData,
+    filterRules: state => state.filterRules,
+    filteredFormData: (state) => {
+      const { include, exclude } = state.filterRules;
+
+      if (include.length > 0) {
+      let includedData = state.formData.filter(item => {
+        return include.some(ruleGroup => {
+          const rules = Object.entries(ruleGroup).map(([key, value]) => ({ [key]: value }));
+          return rules.every(rule => Object.entries(rule).every(([key, value]) => item[key].includes(value)));
+        });
+      });
+
+      let filteredData = includedData.filter(item => {
+        return !exclude.some(ruleGroup => {
+          const rules = Object.entries(ruleGroup).map(([key, value]) => ({ [key]: value }));
+          return rules.every(rule => Object.entries(rule).every(([key, value]) => item[key].includes(value)));
+        });
+      });
+      
+      return filteredData;
+      } else {
+        let filteredData = state.formData.filter(item => {
+        return !exclude.some(ruleGroup => {
+          const rules = Object.entries(ruleGroup).map(([key, value]) => ({ [key]: value }));
+          return rules.every(rule => Object.entries(rule).every(([key, value]) => item[key].includes(value)));
+          });
+        });
+    
+          return filteredData;
+      }
+    },
   }
 })

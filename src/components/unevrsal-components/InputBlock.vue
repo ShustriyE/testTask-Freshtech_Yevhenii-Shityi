@@ -33,7 +33,7 @@ export default {
     },
     validation: {
       type: Function,
-      required: true,
+      required: false,
     },
   },
   computed: {
@@ -46,14 +46,19 @@ export default {
       },
     },
     isValidateInput() {
-      return this.currentValue.length > 0
+      if(this.validation) {
+        return this.currentValue.length > 0
         ? this.validation(this.currentValue)
         : true;
+      }
+      return true
     },
   },
   methods: {
     validateInput() {
-      this.$emit("checkValidation", {id: this.id, validate: this.validation(this.currentValue)});
+      if(this.validation) {
+        this.$emit("checkValidation", {id: this.id, validate: this.validation(this.currentValue)})
+      }
     },
   },
 };

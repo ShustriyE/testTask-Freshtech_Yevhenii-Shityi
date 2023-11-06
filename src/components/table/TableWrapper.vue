@@ -29,9 +29,12 @@
 export default {
   name: 'TableWrapper',
   computed: {
+    filteredFormData() {
+      return this.$store.getters.filteredFormData;
+    },
     formData() {
-      if(this.$store.getters.formData.length >= 0) {
-        return this.$store.getters.formData
+      if(this.filteredFormData.length >= 0) {
+        return this.filteredFormData
       }
       return null
     },

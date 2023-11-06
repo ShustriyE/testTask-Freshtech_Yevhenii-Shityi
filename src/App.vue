@@ -1,5 +1,7 @@
 <template>
   <div id="app">
+    <span>Test task Yevhenii Shutyi </span>
+    <a href="https://t.me/ShustriyE">Telegram</a>
     <HomePage />
   </div>
 </template>

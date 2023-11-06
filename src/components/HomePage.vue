@@ -1,6 +1,8 @@
 <template>
   <div id="home-page">
     <FormWrapper />
+    <SortWrapper />
+    <FiltersWrapper />
     <TableWrapper />
   </div>
 </template>
@@ -8,10 +10,12 @@
 <script>
 import FormWrapper from './table/FormWrapper.vue'
 import TableWrapper from './table/TableWrapper'
+import FiltersWrapper from './table/FiltersWrapper'
+import SortWrapper from './table/SortWrapper'
 
 export default {
   name: 'HomePage',
-  components: {FormWrapper, TableWrapper}
+  components: {FormWrapper, TableWrapper, FiltersWrapper, SortWrapper}
 }
 </script>
 
