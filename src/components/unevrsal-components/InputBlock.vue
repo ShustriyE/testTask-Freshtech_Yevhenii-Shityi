@@ -39,17 +39,17 @@ export default {
   computed: {
     currentValue: {
       get() {
-        return this.value;
+        return this.value
       },
       set(newValue) {
-        this.$emit("input", newValue);
+        this.$emit("input", newValue)
       },
     },
     isValidateInput() {
       if(this.validation) {
         return this.currentValue.length > 0
         ? this.validation(this.currentValue)
-        : true;
+        : true
       }
       return true
     },

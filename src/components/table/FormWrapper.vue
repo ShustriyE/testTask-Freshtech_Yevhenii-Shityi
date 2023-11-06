@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import InputBlock from "../unevrsal-components/InputBlock.vue";
+import InputBlock from "../unevrsal-components/InputBlock.vue"
 
 export default {
   name: "FormWrapper",
@@ -24,32 +24,32 @@ export default {
   data() {
     return {
       validate: [],
-    };
+    }
   },
   computed: {
     formDataFields() {
-      return this.$store.getters.formFields;
+      return this.$store.getters.formFields
     },
   },
   methods: {
     checkFormValidity() {
-      if (this.validate.every((field) => field.validate === true)) this.onSubmit();
+      if (this.validate.every((field) => field.validate === true)) this.onSubmit()
     },
     checkValidation({ id, validate }) {
       if (this.validate.filter((field) => field.id === id).length) {
         this.validate.forEach((field) => {
-          field.id === id ? (field.validate = validate) : null;
-        });
+          field.id === id ? (field.validate = validate) : null
+        })
       } else {
-        this.validate.push({ id, validate });
+        this.validate.push({ id, validate })
       }
     },
     onSubmit() {
-      this.$store.commit("updateFormData", this.formDataFields);
+      this.$store.commit("updateFormData", this.formDataFields)
 
       this.formDataFields.forEach((field) => {
-        field.value = "";
-      });
+        field.value = ""
+      })
     },
   },
 };

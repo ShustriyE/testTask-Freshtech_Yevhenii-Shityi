@@ -30,7 +30,7 @@ export default {
   name: 'TableWrapper',
   computed: {
     filteredFormData() {
-      return this.$store.getters.filteredFormData;
+      return this.$store.getters.sortFilteredData
     },
     formData() {
       if(this.filteredFormData.length >= 0) {
@@ -40,9 +40,9 @@ export default {
     },
     keysRender() {
       if (this.formData.length > 0) {
-        return Object.keys(this.formData[0]);
+        return Object.keys(this.formData[0])
       }
-      return [];
+      return []
     }
   },
 }

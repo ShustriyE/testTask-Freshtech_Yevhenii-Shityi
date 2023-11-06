@@ -110,80 +110,80 @@ export default {
       showExcludeFiltersInput: false,
       inputFields: [{ filterIncludeId: "", filterIncludeText: "" }],
       excludeFields: [{ filterExcludeId: "", filterExcludeText: "" }],
-    };
+    }
   },
   methods: {
     formatFiltersRule(obj) {
       const result = obj.reduce((result, currentObject) => {
-        const { filterIncludeId, filterIncludeText } = currentObject;
-        result[filterIncludeId] = filterIncludeText;
-        return result;
-      }, {});
+        const { filterIncludeId, filterIncludeText } = currentObject
+        result[filterIncludeId] = filterIncludeText
+        return result
+      }, {})
       if (Object.values(result).every((value) => value.length > 0)) {
-        return result;
+        return result
       }
     },
     addIncludeFilter() {
       this.$store.dispatch(
         "addIncludeFilterRule",
         this.formatFiltersRule(this.inputFields)
-      );
+      )
       this.inputFields = [{ filterIncludeId: "", filterIncludeText: "" }]
     },
     addExcludeFilter() {
       this.$store.dispatch(
         "addExcludeFilterRule",
         this.formatFiltersRule(this.inputFields)
-      );
+      )
       this.excludeFields = [{ filterExcludeId: "", filterExcludeText: "" }]
     },
     removeIncludeFilter(index) {
-      this.$store.dispatch("removeIncludeFilterRule", index);
+      this.$store.dispatch("removeIncludeFilterRule", index)
     },
     removeExcludeFilter(index) {
-      this.$store.dispatch("removeExcludeFilterRule", index);
+      this.$store.dispatch("removeExcludeFilterRule", index)
     },
     showFiltersInputInclude() {
-      this.showIncludeFiltersInput = !this.showIncludeFiltersInput;
+      this.showIncludeFiltersInput = !this.showIncludeFiltersInput
     },
     showFiltersInputExclude() {
-      this.showExcludeFiltersInput = !this.showExcludeFiltersInput;
+      this.showExcludeFiltersInput = !this.showExcludeFiltersInput
     },
     addIncludeField() {
-      this.inputFields.push([{ filterIncludeId: "", filterIncludeText: "" }]);
+      this.inputFields.push([{ filterIncludeId: "", filterIncludeText: "" }])
     },
     removeIncludeField(index) {
       if (this.inputFields.length > 1) {
-        this.inputFields.splice(index, 1);
+        this.inputFields.splice(index, 1)
       } else {
-        this.inputFields = [{ filterIncludeId: "", filterIncludeText: "" }];
-        this.showIncludeFiltersInput = false;
+        this.inputFields = [{ filterIncludeId: "", filterIncludeText: "" }]
+        this.showIncludeFiltersInput = false
       }
     },
     addExcludeField() {
-      this.excludeFields.push([{ filterExcludeId: "", filterExcludeText: "" }]);
+      this.excludeFields.push([{ filterExcludeId: "", filterExcludeText: "" }])
     },
     removeExcludeField(index) {
       if (this.excludeFields.length > 1) {
-        this.excludeFields.splice(index, 1);
+        this.excludeFields.splice(index, 1)
       } else {
-        this.excludeFields = [{ filterExcludeId: "", filterExcludeText: "" }];
-        this.showExcludeFiltersInput = false;
+        this.excludeFields = [{ filterExcludeId: "", filterExcludeText: "" }]
+        this.showExcludeFiltersInput = false
       }
     },
   },
   computed: {
     includeFilters() {
-      return this.$store.getters.filterRules.include;
+      return this.$store.getters.filterRules.include
     },
     excludeFilters() {
-      return this.$store.getters.filterRules.exclude;
+      return this.$store.getters.filterRules.exclude
     },
     formFields() {
-      return this.$store.getters.formFields;
+      return this.$store.getters.formFields
     },
     chooseField() {
-      return this.formFields.map((field) => field.id);
+      return this.formFields.map((field) => field.id)
     },
   },
 };
