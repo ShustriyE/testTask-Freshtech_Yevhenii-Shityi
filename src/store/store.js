@@ -17,7 +17,7 @@ export default new Vuex.Store({
       include: [],
       exclude: []
     },
-    sortBy: ['name', 'email'],
+    sortBy: [],
   },
   mutations: {
     updateFormData(state, data) {
