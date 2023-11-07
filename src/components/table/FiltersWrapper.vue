@@ -38,6 +38,14 @@ export default {
       excludeFields: [{ filterId: "", filterText: "" }],
     }
   },
+  computed: {
+    includeFilters() {
+      return this.$store.getters.filterRules.include
+    },
+    excludeFilters() {
+      return this.$store.getters.filterRules.exclude
+    },
+  },
   methods: {
     formatFiltersRule(obj) {
       const result = obj.reduce((result, currentObject) => {
@@ -90,14 +98,6 @@ export default {
         this.excludeFields = [{ filterId: "", filterText: "" }]
         this.showIncludeFilters = false
       }
-    },
-  },
-  computed: {
-    includeFilters() {
-      return this.$store.getters.filterRules.include
-    },
-    excludeFilters() {
-      return this.$store.getters.filterRules.exclude
     },
   },
 };

@@ -26,6 +26,14 @@ export default {
       selectedSortRule: null,
     };
   },
+  computed: {
+    sortBy() {
+      return this.$store.getters.sortBy;
+    },
+    chooseSortRule() {
+      return this.$store.getters.formFields.map((field) => field.id);
+    },
+  },
   methods: {
     addSortRule() {
       if (
@@ -37,14 +45,6 @@ export default {
     },
     removeSortRule(index) {
       this.sortBy.splice(index, 1);
-    },
-  },
-  computed: {
-    sortBy() {
-      return this.$store.getters.sortBy;
-    },
-    chooseSortRule() {
-      return this.$store.getters.formFields.map((field) => field.id);
     },
   },
 };
