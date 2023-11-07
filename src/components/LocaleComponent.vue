@@ -13,13 +13,19 @@
 </template>
 
 <script>
+import translates from '../translates_i18n'
+
 export default {
   name: "LocaleComponent",
   data() {
     return {
       selectedLocale: this.$i18n.locale,
-      availableLocales: ["en", "ua", "ru"],
     };
+  },
+  computed: {
+    availableLocales() {
+      return Object.keys(translates)
+    }
   },
   methods: {
     changeLocale() {

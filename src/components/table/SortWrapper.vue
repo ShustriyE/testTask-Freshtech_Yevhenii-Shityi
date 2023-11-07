@@ -8,7 +8,7 @@
       </div>
       <div>
         <select v-model="selectedSortRule" @change="addSortRule">
-          <option disabled>{{$t('сhoose_option')}}</option>
+          <option disabled>{{$t('choose_option')}}</option>
           <option v-for="id in chooseSortRule" :key="id" :value="id">
             {{ id }}
           </option>

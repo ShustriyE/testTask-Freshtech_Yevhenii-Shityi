@@ -88,7 +88,6 @@ export default {
         this.includeFields.splice(index, 1)
       } else {
         this.includeFields = [{ filterId: "", filterText: "" }]
-        this.showIncludeFilters = false
       }
     },
     removeExcludeField(index) {
@@ -96,7 +95,6 @@ export default {
         this.excludeFields.splice(index, 1)
       } else {
         this.excludeFields = [{ filterId: "", filterText: "" }]
-        this.showIncludeFilters = false
       }
     },
   },

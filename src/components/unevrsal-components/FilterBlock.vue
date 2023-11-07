@@ -23,7 +23,7 @@
           class="relative_wrapper inputs_wrapper__fields"
         >
           <select v-model="field.filterId">
-            <option disabled>{{$t('сhoose_option')}}</option>
+            <option disabled>{{$t('choose_option')}}</option>
             <option v-for="id in chooseField" :key="id" :value="id">
               {{ id }}
             </option>
@@ -126,9 +126,6 @@ export default {
 .buttons_filter__wrapper {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  display: flex;
   align-items: center;
   justify-content: space-around;
   margin: 10px 0;

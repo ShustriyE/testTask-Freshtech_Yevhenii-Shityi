@@ -1,17 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+import formConfig from './form.config';
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    formConfig: {
-      fields: [
-        {id: 'name', value: '', validation: (value) => value.length > 3},
-        {id: 'phone', value: '', validation: (value) => value.slice(1).split('').every(number => !isNaN(number)) && value.length >= 10 },
-        {id: 'email', value: '', validation: (value) => value.includes('@')},
-      ]
-    },
+    formConfig,
     formData: [],
     filterRules: {
       include: [],
@@ -65,23 +61,20 @@ export default new Vuex.Store({
         })
       })
 
-      let filteredData = includedData.filter(item => {
+      return includedData.filter(item => {
         return !exclude.some(ruleGroup => {
           const rules = Object.entries(ruleGroup).map(([key, value]) => ({ [key]: value }))
           return rules.every(rule => Object.entries(rule).every(([key, value]) => item[key].includes(value)))
         })
       })
       
-      return filteredData
       } else {
-        let filteredData = state.formData.filter(item => {
+        return state.formData.filter(item => {
         return !exclude.some(ruleGroup => {
           const rules = Object.entries(ruleGroup).map(([key, value]) => ({ [key]: value }))
           return rules.every(rule => Object.entries(rule).every(([key, value]) => item[key].includes(value)))
           })
         })
-    
-          return filteredData
       }
     },
     sortFilteredData: (state, getters) => {

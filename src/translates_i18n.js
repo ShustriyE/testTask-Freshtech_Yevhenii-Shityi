@@ -1,7 +1,7 @@
 const translates = {
     en: {
         send: 'Send',
-        сhoose_option: 'Choose Option',
+        choose_option: 'Choose Option',
         sort_by: 'Sort By',
         add_filters: 'Add Filters',
         add_field: 'Add Field',
@@ -16,7 +16,7 @@ const translates = {
     },
     ua: {
         send: 'Відправити',
-        сhoose_option: 'Оберіть Варіант',
+        choose_option: 'Оберіть Варіант',
         sort_by: 'Сортувати За',
         add_filters: 'Додати Фільтри',
         add_field: 'Додати Поле',
@@ -31,7 +31,7 @@ const translates = {
     },
     ru: {
         send: 'Отправить',
-        сhoose_option: 'Выберите Вариант',
+        choose_option: 'Выберите Вариант',
         sort_by: 'Сортировать По',
         add_filters: 'Добавить Фильтры',
         add_field: 'Добавить Поле',
