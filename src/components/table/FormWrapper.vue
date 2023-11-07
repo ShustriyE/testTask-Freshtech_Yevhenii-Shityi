@@ -3,14 +3,14 @@
     <div v-for="field in formDataFields" :key="field.id">
       <InputBlock
         v-model="field.value"
-        :labelText="field.id"
+        :labelText="$t(field.id)"
         :id="field.id"
         :validation="field.validation"
         @checkValidation="checkValidation"
       />
     </div>
     <button class="form_wrapper__button" @click="checkFormValidity">
-      Send
+      {{$t('send')}}
     </button>
   </div>
 </template>

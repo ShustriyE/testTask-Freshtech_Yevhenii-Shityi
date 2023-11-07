@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>Sort By</h3>
+    <h3>{{$t('sort_by')}}</h3>
     <div class="relative_wrapper">
       <div v-for="(rule, index) in sortBy" :key="index" class="relative_wrapper rules">
         {{ rule }}
@@ -8,7 +8,7 @@
       </div>
       <div>
         <select v-model="selectedSortRule" @change="addSortRule">
-          <option disabled>Choose option</option>
+          <option disabled>{{$t('сhoose_option')}}</option>
           <option v-for="id in chooseSortRule" :key="id" :value="id">
             {{ id }}
           </option>

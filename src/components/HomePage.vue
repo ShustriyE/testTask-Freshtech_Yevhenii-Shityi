@@ -1,5 +1,6 @@
 <template>
   <div id="home-page">
+    <LocaleComponent />
     <FormWrapper />
     <SortWrapper />
     <FiltersWrapper />
@@ -8,6 +9,7 @@
 </template>
 
 <script>
+import LocaleComponent from './LocaleComponent.vue'
 import FormWrapper from './table/FormWrapper.vue'
 import TableWrapper from './table/TableWrapper'
 import FiltersWrapper from './table/FiltersWrapper'
@@ -15,7 +17,7 @@ import SortWrapper from './table/SortWrapper'
 
 export default {
   name: 'HomePage',
-  components: {FormWrapper, TableWrapper, FiltersWrapper, SortWrapper}
+  components: {LocaleComponent, FormWrapper, TableWrapper, FiltersWrapper, SortWrapper}
 }
 </script>
 

@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="wrapper">
-      <h3>Include Filters</h3>
+      <h3>{{$t('include_filters')}}</h3>
       <div>
         <div
           v-for="(rule, index) in includeFilters"
@@ -24,7 +24,7 @@
           class="relative_wrapper inputs_wrapper__fields"
         >
           <select v-model="field.filterIncludeId">
-            <option disabled>Choose option</option>
+            <option disabled>{{$t('сhoose_option')}}</option>
             <option v-for="id in chooseField" :key="id" :value="id">
               {{ id }}
             </option>
@@ -35,20 +35,20 @@
           </div>
         </div>
         <div class="buttons_filter__wrapper">
-          <div @click="addIncludeFilter" class="button add">Add Filters</div>
-          <div @click="addIncludeField" class="button add">Add Field</div>
+          <div @click="addIncludeFilter" class="button add">{{$t('add_filters')}}</div>
+          <div @click="addIncludeField" class="button add">{{$t('add_field')}}</div>
         </div>
       </div>
       <div @click="showFiltersInputInclude" class="button add">
         {{
           showIncludeFiltersInput
-            ? "Close Filter Settings"
-            : "Add Include Filter"
+            ? $t('close_filter_settings')
+            : $t('add_include_filter')
         }}
       </div>
     </div>
     <div class="wrapper">
-      <h3>Exclude Filters</h3>
+      <h3>{{$t('exclude_filters')}}</h3>
       <div>
         <div
           v-for="(rule, index) in excludeFilters"
@@ -71,7 +71,7 @@
           class="relative_wrapper"
         >
           <select v-model="field.filterExcludeId">
-            <option disabled>Choose option</option>
+            <option disabled>{{$t('сhoose_option')}}</option>
             <option v-for="id in chooseField" :key="id" :value="id">
               {{ id }}
             </option>
@@ -82,15 +82,15 @@
           </div>
         </div>
         <div class="buttons_filter__wrapper">
-          <div @click="addExcludeFilter" class="button add">Add Filters</div>
-          <div @click="addExcludeField" class="button add">Add Field</div>
+          <div @click="addExcludeFilter" class="button add">{{$t('add_filters')}}</div>
+          <div @click="addExcludeField" class="button add">{{$t('add_field')}}</div>
         </div>
       </div>
       <div @click="showFiltersInputExclude" class="button add">
         {{
           showExcludeFiltersInput
-            ? "Close Filter Settings"
-            : "Add Exclude Filter"
+            ? $t('close_filter_settings')
+            : $t('add_exclude_filter')
         }}
       </div>
     </div>
@@ -231,12 +231,16 @@ export default {
     align-items: center;
     width: 30vw;
     margin: 5px 0;
+
+    input {
+      margin-left: 5px;
+    }
   }
 }
 
 .button {
   user-select: none;
-  width: 150px;
+  padding: 5px;
   text-align: center;
   cursor: pointer;
 }
