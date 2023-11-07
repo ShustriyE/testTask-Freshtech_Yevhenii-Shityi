@@ -150,7 +150,6 @@ export default {
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    width: 30vw;
     margin: 5px 0;
 
     input {
@@ -182,7 +181,7 @@ export default {
 
   &_filter {
     position: absolute;
-    left: 340px;
+    right: -17px;
     top: -8px;
     rotate: 50deg;
     width: 1px;
